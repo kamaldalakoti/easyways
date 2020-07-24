@@ -1,0 +1,1 @@
+web: gunicorn EASYWAYS.wsgi --log-file -

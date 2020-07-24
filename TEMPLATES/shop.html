@@ -1,0 +1,305 @@
+<style>
+    /* Set the size of the div element that contains the map */
+    
+    body {
+        background-color: cadetblue!important;
+    }
+    
+    .mar {
+        margin-top: 56px;
+    }
+    
+    .search1 {
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: -66px;
+        /* border: 2px solid red; */
+    }
+    
+    .search {
+        margin-top: 60px;
+        /* margin-left: 22%; */
+        border: 2px solid rgb(49, 38, 38);
+        padding-left: 20px!important;
+        padding: 7px;
+        width: 40%;
+        border-radius: 50px;
+    }
+    
+    .fa {
+        margin-left: -46px;
+    }
+    /* side navbar */
+    
+    .sidebar {
+        height: 100%;
+        /* 100% Full-height */
+        width: 0;
+        /* 0 width - change this with JavaScript */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Stay on top */
+        top: -14;
+        left: 0;
+        background-color: #1a202c;
+        /* Black*/
+        overflow-x: hidden;
+        /* Disable horizontal scroll */
+        margin-top: 70px;
+        padding-top: 70px;
+        /* Place content 60px from the top */
+        transition: 0.5s;
+        /* 0.5 second transition effect to slide in the sidebar */
+    }
+    /* The sidebar links */
+    
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    /* When you mouse over the navigation links, change their color */
+    
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+    /* Position and style the close button (top right corner) */
+    
+    .sidebar .closebtn {
+        position: absolute;
+        top: -27px;
+        right: -10px;
+        background-color: #1a202c;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    /* The button used to open the sidebar */
+    
+    .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #1a202c;
+        color: white;
+        margin-top: 60px;
+        border: none;
+    }
+    
+    .openbtn:hover {
+        background-color: #444;
+    }
+    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+    
+    #main {
+        transition: margin-left .5s;
+        /* If you want a transition effect */
+        padding: 20px;
+    }
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+    
+    @media screen and (max-height: 450px) {
+        .sidebar {
+            padding-top: 15px;
+        }
+        .sidebar a {
+            font-size: 18px;
+        }
+    }
+    
+    .drop {
+        margin-top: 20px;
+        color: white;
+    }
+    
+    .drop_1 {
+        color: white;
+        margin-bottom: 30px;
+        width: 100%;
+        background-color: rgb(26, 32, 44)!important;
+    }
+    
+    .drop_2 {
+        color: white;
+        width: 100%;
+        background-color: rgb(26, 32, 44)!important;
+    }
+</style>
+{% extends "base.html" %} {% block title %}Shop{% endblock title %} {% block body %}
+<h1>My First Google Map</h1>
+
+
+<!-- search option  -->
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <label for="cars" class="drop"><h1 style="margin-left: 10px; color: cornflowerblue;"><b> SHOP LIST</b></h1></label><br>
+    <label for="cars" class="drop">Sweet Shops:</label>
+
+
+    <form action="/Option_Shop" method="get">
+        <select class="drop_1" onchange="submit()" name="types" id='types'>
+            <option>Choose</option>
+        {% for item in data1 %}
+        <option   value="{{item.Product_name}}" >{{item.Product_name}} </option>
+        {% endfor %}
+        
+    </select>
+    </form>
+    <label for="cars" class="drop">Kumche:</label>
+    <form action="/Option_Shop" method="get">
+
+        <select onchange="submit()" name="types" id='types' class="drop_1">
+        <option >Choose</option>
+        {% for item in data2 %}
+        <option value="{{item.Product_name}}" >{{item.Product_name}}</option>
+        {% endfor %}
+    </select>
+    </form>
+</div>
+
+
+
+<div id="main">
+    <button class="openbtn" onclick="openNav()">&#9776; Open </button>
+    <section class="text-gray-700 body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-20">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Start Shoping </h1>
+                <div class="search-container search1">
+                    <form action="/Shop_Search" method="get">
+                        <input type="text" placeholder="Search.." name="query" id='query' class="search">
+                        <button type="submit"><i class="fa fa-search "></i></button>
+                    </form>
+                </div>
+
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom.</p>
+            </div>
+            <div class="flex flex-wrap -m-4">
+                {% for item in upload_1 %}
+
+                <div class="lg:w-1/3 sm:w-1/2 p-4">
+                    <div class="flex relative">
+                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="{{item.pictures}}">
+                        <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"> {{item.Name}}</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Doctor}}</h1>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Doctor_of}}</h1>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Contact}}</h1>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Timing}}</h1>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Loction}}</h1>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} {% for item in upload_2 %}
+
+                <div class="lg:w-1/3 sm:w-1/2 p-4">
+                    <div class="flex relative">
+                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="{{item.pictures}}">
+                        <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"> {{item.Name}}</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Doctor}}</h1>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Doctor_of}}</h1>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Contact}}</h1>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Timing}}</h1>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{item.Loction}}</h1>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="lg:w-1/3 sm:w-1/2 p-4">
+                    <div class="flex relative">
+                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="https://dummyimage.com/601x361">
+                        <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The Catalyzer</h1>
+                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/3 sm:w-1/2 p-4">
+                    <div class="flex relative">
+                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="https://dummyimage.com/603x363">
+                        <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The 400 Blows</h1>
+                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/3 sm:w-1/2 p-4">
+                    <div class="flex relative">
+                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="https://dummyimage.com/602x362">
+                        <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Neptune</h1>
+                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/3 sm:w-1/2 p-4">
+                    <div class="flex relative">
+                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="https://dummyimage.com/605x365">
+                        <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Holden Caulfield</h1>
+                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/3 sm:w-1/2 p-4">
+                    <div class="flex relative">
+                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="https://dummyimage.com/606x366">
+                        <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Alper Kamu</h1>
+                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- <div class="absolute inset-0 bg-gray-300 mar">
+    <iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="map" scrolling="no" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"></iframe>
+</div> -->
+<!-- 
+<div class="mapouter mar">
+    <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q={{data1}}%20{{data2}}%20{{data3}}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/nordvpn-coupon/">nord vpn coupon code</a></div>
+    <style>
+        .mapouter {
+            position: relative;
+            text-align: right;
+            height: 500px;
+            width: 600px;
+        }
+        
+        .gmap_canvas {
+            overflow: hidden;
+            background: none!important;
+            height: 500px;
+            width: 600px;
+        }
+    </style>
+</div> -->
+<script>
+    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("main").style.display = ' none';
+    }
+
+    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("main").style.display = 'block';
+    }
+</script>
+{% endblock body %}

@@ -1,0 +1,150 @@
+<style>
+    .sec {
+        position: relative;
+        top: 56px;
+        z-index: 1;
+        /* border: 2px solid red; */
+    }
+    
+    footer {
+        position: relative;
+        width: 100%;
+        z-index: 3;
+        top: -28px;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+    
+    #ac-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, .6);
+        z-index: 1001;
+    }
+    
+    #popup {
+        width: 100%;
+        height: 20%;
+        background: black;
+        /* border: 5px solid #000; */
+        border-radius: 25px;
+        -moz-border-radius: 25px;
+        -webkit-border-radius: 25px;
+        box-shadow: #64686e 0px 0px 3px 3px;
+        -moz-box-shadow: #64686e 0px 0px 3px 3px;
+        -webkit-box-shadow: #64686e 0px 0px 3px 3px;
+        background-color: rgba(255, 255, 255, .6);
+        position: relative;
+        top: 15px;
+        /* left: 375px; */
+    }
+    
+    .befooter {
+        position: relative;
+        background-color: #1a202c;
+        /* margin-top: 20px;
+         */
+        top: 128px;
+        color: white;
+    }
+</style>{% extends "base.html" %} {% block title %}Home{% endblock title %} {% block body %}
+<section class="text-gray-500 bg-gray-900 body-font sec">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap -m-4">
+            <div class="p-4 md:w-1/3">
+                <div class="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
+                    <a href="/Hospital"><img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80" alt="blog"></a>
+                    <a href="/Hospital">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">Health</h2>
+                            <h1 class="title-font text-lg font-medium text-white mb-3"><a href="/Hospital">Hospital</a> </h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="p-4 md:w-1/3">
+                <div class="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
+                    <a href="/Shop"><img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://images.unsplash.com/photo-1558898400-d8cb2f9f3c26?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="blog"></a>
+                    <div class="p-6">
+                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">Shoping</h2>
+                        <h1 class="title-font text-lg font-medium text-white mb-3">
+                            <a href="/Shop">Shop</a>
+                        </h1>
+                        <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 md:w-1/3">
+                <div class="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
+                    <a href="/Tour"><img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://images.unsplash.com/photo-1580336127337-26579bf707a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="blog"></a>
+                    <div class="p-6">
+                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">Traveling</h2>
+                        <h1 class="title-font text-lg font-medium text-white mb-3"><a href="/Tour"> Tour & Travels</a></h1>
+                        <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <div id="ac-wrapper">
+    <div id="popup">
+        <center>
+            <h5>
+                Try our mobile application
+            </h5>
+            <h2><a href="#">myAPP.com</a></h2>
+            <input type="submit" name="submit" value="Submit" onClick="PopUp()" />
+        </center>
+    </div>
+</div> -->
+<section class="text-gray-700 body-font befooter">
+    <div class="container px-5 py-15 mx-auto ">
+        <div class="flex flex-wrap -m-4 text-center div_col">
+            <div class="p-4 sm:w-1/4 w-1/2">
+                <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-100">{{goa}}</h2>
+                <p class="leading-relaxed">Hospitals</p>
+            </div>
+            <div class="p-4 sm:w-1/4 w-1/2">
+                <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-200">{{shop}}</h2>
+                <p class="leading-relaxed">Shops</p>
+            </div>
+            <div class="p-4 sm:w-1/4 w-1/2">
+                <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-300">{{tours}}</h2>
+                <p class="leading-relaxed">Tour</p>
+            </div>
+            <div class="p-4 sm:w-1/4 w-1/2">
+                <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-400">4</h2>
+                <p class="leading-relaxed">Products</p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="text-gray-500 bg-gray-900 body-font">
+    <div class="container px-5 py-0 mx-auto flex items-center sm:flex-row flex-col">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+
+            <span class="ml-3 text-xl" style="color: aqua;">EasyWays</span>
+        </a>
+        <p class="text-sm text-gray-600 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">© 2020 EasyWays —
+            <a href="#" class="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">@kamal</a>
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        
+      </span>
+    </div>
+</footer>
+<!-- <script type="text/javascript">
+    function PopUp() {
+        document.getElementById('ac-wrapper').style.display = "none";
+    }
+</script> -->
+{% endblock body %}
