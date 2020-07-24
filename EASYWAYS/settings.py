@@ -124,6 +124,6 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 # STATIC_ROOT = os.path.join(BASE_DIR, '')
-STATICFILES_STORAGE = 'EASYWAYS.storage.S3Storage'
+# STATICFILES_STORAGE = 'EASYWAYS.storage.S3Storage'
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
